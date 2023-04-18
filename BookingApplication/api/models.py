@@ -7,7 +7,7 @@ from django.core.validators import MaxValueValidator,MinValueValidator
 class Department(models.Model):
     department_name=models.CharField(max_length=200,unique=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.department_name
 
 class DoctorProfile(models.Model):
@@ -27,7 +27,7 @@ class DoctorProfile(models.Model):
     gender=models.CharField(max_length=10,choices=options,default="male")
     
     
-    def str(self):
+    def __str__(self):
         return self.user.get_full_name()
 
 class DocLeave(models.Model):
@@ -50,7 +50,7 @@ class PatientProfile(models.Model):
     contact_number=models.CharField(max_length=20)
     p_image=models.ImageField(upload_to="images",null=True,blank=True)
 
-    def str(self):
+    def __str__(self):
         return self.user.get_full_name()
 
 
@@ -64,7 +64,7 @@ class Appointment(models.Model):
     class Meta:
         unique_together=('doctor','patient','appointment_date',)
 
-    def str(self):
+    def __str__(self):
         return self.doctor.user.get_full_name()
 
 
@@ -75,5 +75,5 @@ class Review(models.Model):
     comment=models.TextField(blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
   
-    def str(self):
+    def __str__(self):
         return self.doctor.user.get_full_name()
