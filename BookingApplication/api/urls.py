@@ -8,6 +8,7 @@ routers=DefaultRouter()
 routers.register("account/docuser",views.UserDoctorView,basename="doc_user")
 routers.register("account/patientuser",views.UserDoctorView,basename="patient_user")
 routers.register("patientuser/profile",views.PatientProfileView,basename="patient-profile")
+routers.register("doctor/profile",views.DoctorProfileView,basename="profile")
 
 urlpatterns = [
     path("token/",ObtainAuthToken.as_view(),name="user_token"),
