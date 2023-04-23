@@ -11,7 +11,7 @@ class Department(models.Model):
         return self.department_name
 
 class DoctorProfile(models.Model):
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name="doctorprofile")
     specialization=models.ForeignKey(Department,on_delete=models.CASCADE)
     license_number=models.CharField(max_length=50)
     qualification=models.CharField(max_length=100)
